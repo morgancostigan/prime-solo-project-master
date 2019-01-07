@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import RegisterBreweryPage from '../RegisterBreweryPage/RegisterBreweryPage';
 
 class RegisterPage extends Component {
   state = {
@@ -9,15 +10,13 @@ class RegisterPage extends Component {
     email: '',
     password: '',
     isBrewer: false,
-    isAdmin: false,
+    isAdmin: false
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
     if (this.state.username && this.state.userzip && this.state.email && this.state.password) {
-    // if (this.state.username && this.state.email && this.state.password) {
-
       this.props.dispatch({
         type: 'REGISTER_STANDARD_USER',
         payload: {
@@ -27,7 +26,8 @@ class RegisterPage extends Component {
           email: this.state.email,
           password: this.state.password,
           isBrewer: this.state.isBrewer,
-          isAdmin: this.state.isAdmin
+          isAdmin: this.state.isAdmin,
+
         },
       });
     } else {
@@ -98,6 +98,18 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
+          {/* checkbox to determine whether to continue to RegisterBreweryPage */}
+          <div>
+            <label htmlFor="isBrewer">
+              Registering as a Brewery:
+              <input
+                type="checkbox"
+                name="isBrewer"
+                value={this.state.isBrewer}
+                onChange={this.handleInputChangeFor('isBrewer')}
+              />
+            </label>
+          </div>      
           <div>
             <input
               className="register"
