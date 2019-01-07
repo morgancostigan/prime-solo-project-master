@@ -4,18 +4,30 @@ import {connect} from 'react-redux';
 class RegisterPage extends Component {
   state = {
     username: '',
+    userzip: '',
+    avatar_id: 1,
+    email: '',
     password: '',
+    isBrewer: false,
+    isAdmin: false,
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
-    if (this.state.username && this.state.password) {
+    if (this.state.username && this.state.userzip && this.state.email && this.state.password) {
+    // if (this.state.username && this.state.email && this.state.password) {
+
       this.props.dispatch({
-        type: 'REGISTER',
+        type: 'REGISTER_STANDARD_USER',
         payload: {
           username: this.state.username,
+          userzip: this.state.userzip,
+          avatar_id: this.state.avatar_id,
+          email: this.state.email,
           password: this.state.password,
+          isBrewer: this.state.isBrewer,
+          isAdmin: this.state.isAdmin
         },
       });
     } else {
@@ -53,6 +65,28 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
+          <div>
+            <label htmlFor="userzip">
+              ZIP Code:
+              <input
+                type="number"
+                name="userzip"
+                value={this.state.userzip}
+                onChange={this.handleInputChangeFor('userzip')}
+              />
+            </label>
+          </div>       
+          <div>
+            <label htmlFor="email">
+              Email:
+              <input
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
+              />
+            </label>
+          </div>                
           <div>
             <label htmlFor="password">
               Password:
