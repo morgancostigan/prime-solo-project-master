@@ -15,8 +15,8 @@ class BeerListPage extends Component{
 
     render () {
         return(
-            <div>
-                <h1 class="header-text">BEER!</h1>
+            <div style={{ display: 'flex', flexWrap: 'wrap'}}>
+                <h1 class="header-text"></h1>
                 {/* Render each item from the shelf reducer */}
                 {this.props.reduxStore.beer.map((each) => {
                     return (<BeerItem
