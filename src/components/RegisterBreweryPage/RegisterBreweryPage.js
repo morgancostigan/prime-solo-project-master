@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class RegisterBreweryPage extends Component {
+
     state = {
         name: '',
         address: '',
@@ -10,13 +11,14 @@ class RegisterBreweryPage extends Component {
         zip:'',
         website: '',
         logo_url: '',
-        bio: '',
-        user: ''/////////////////////////////////needs user.id
+        bio: ''
     };
 
     registerUser = (event) => {
         event.preventDefault();
         //////////////////////this needs sorting/////////////////////////
+        console.log('this.props.user', this.props.user);
+        
         if (this.state.name && this.state.address && this.state.city && this.state.state && this.state.zip) {
             this.props.dispatch({
                 type: 'REGISTER_BREWERY',
@@ -29,7 +31,7 @@ class RegisterBreweryPage extends Component {
                     website: this.state.website,
                     logo_url: this.state.logo_url,
                     bio: this.state.bio,
-                    user: state.user.id////////////////////////////////////////////////
+                    user: this.props.user.id
                 },
             });
         }

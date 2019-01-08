@@ -27,6 +27,10 @@ const registrationMessage = (state = '', action) => {
       return 'Please fill all fields';
     case 'REGISTRATION_FAILED':
       return 'Oops! That didn\'t work. The username might already be taken. Try again!';
+    case 'BREWERY_REGISTRATION_SUCCESSFUL':
+      return 'Brewery Registration Successful!';
+    case 'USER_REGISTRATION_SUCCESSFUL':
+      return 'User Registration Successful!';
     default:
       return state;
   }
