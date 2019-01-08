@@ -7,23 +7,17 @@ class RegisterBreweryPage extends Component {
         address: '',
         city: '',
         state: '',
+        zip:'',
         website: '',
         logo_url: '',
         bio: '',
-
-        username: this.props.username,
-        userzip: this.props.username,
-        avatar_id: this.props.username,
-        email: this.props.username,
-        password: this.props.username,
-        isBrewer: this.props.username,
-        isAdmin: this.props.username,
+        user: ''/////////////////////////////////needs user.id
     };
 
     registerUser = (event) => {
         event.preventDefault();
         //////////////////////this needs sorting/////////////////////////
-        if (this.state.name && this.state.address && this.state.city && this.state.state) {
+        if (this.state.name && this.state.address && this.state.city && this.state.state && this.state.zip) {
             this.props.dispatch({
                 type: 'REGISTER_BREWERY',
                 payload: {
@@ -31,17 +25,11 @@ class RegisterBreweryPage extends Component {
                     address: this.state.address,
                     city: this.state.city,
                     state: this.state.state,
+                    zip: this.state.zip,
                     website: this.state.website,
                     logo_url: this.state.logo_url,
                     bio: this.state.bio,
-
-                    username: this.state.username,
-                    userzip: this.state.userzip,
-                    avatar_id: this.state.avatar_id,
-                    email: this.state.email,
-                    password: this.state.password,
-                    isBrewer: this.state.isBrewer,
-                    isAdmin: this.state.isAdmin
+                    user: state.user.id////////////////////////////////////////////////
                 },
             });
         }
@@ -115,6 +103,17 @@ class RegisterBreweryPage extends Component {
                         </label>
                     </div>
                     <div>
+                        <label htmlFor="zip">
+                            ZIP Code:
+                            <input
+                                type="number"
+                                name="zip"
+                                value={this.state.zip}
+                                onChange={this.handleInputChangeFor('zip')}
+                            />
+                        </label>
+                    </div>                    
+                    <div>
                         <label htmlFor="website">
                             Website:
                             <input
@@ -176,6 +175,7 @@ class RegisterBreweryPage extends Component {
 // const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
     errors: state.errors,
+    user: state.user,
 });
 
 export default connect(mapStateToProps)(RegisterBreweryPage);

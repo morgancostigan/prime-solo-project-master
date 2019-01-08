@@ -105,7 +105,7 @@ class RegisterPage extends Component {
               <input
                 type="checkbox"
                 name="isBrewer"
-                value={this.state.isBrewer}
+                value="true"
                 onChange={this.handleInputChangeFor('isBrewer')}
               />
             </label>

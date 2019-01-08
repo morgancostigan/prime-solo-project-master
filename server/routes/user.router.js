@@ -31,6 +31,28 @@ router.post('/register', (req, res, next) => {
     .catch((err) => { next(err); });
 });
 
+// Handles POST request with new BREWERY data
+router.post('/registerBrewery', (req, res, next) => {
+  const name = req.body.name;
+  const address = req.body.address;
+  const city = req.body.city;
+  const state = req.body.state;
+  const zip = req.body.zip;
+  const website = req.body.website;
+  const logo_url = req.body.logo_url;
+  const bio = req.body.bio;
+  const user = req.body.user;
+
+
+  const queryText = `WITH breweryInsert AS (
+INSERT INTO "brewery" ("name", "address", "city", "state", "zip", "website", "logo_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+RETURNING "id")
+UPDATE "user" SET "brewery_id" = (SELECT "id" FROM breweryInsert) WHERE "id" = $9`;
+  pool.query(queryText, [name, address, city, state, zip, website, logo_url, bio, user])
+    .then(() => { res.sendStatus(201); })
+    .catch((err) => { next(err); });
+});
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful
