@@ -1,15 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './Footer.css'
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
-
-const Footer = () => (
+const Footer = (props) => (
   <footer>
-    &copy; Prime Digital Academy
+    &copy; Morgan Costigan 
+        <div className="nav-right">
+      {props.user.username}
+        </div>
   </footer>
 );
 
-export default Footer;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+// this allows us to use <App /> in index.js
+export default connect(mapStateToProps)(Footer);
