@@ -1,13 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './Footer.css'
+import IconButton from '@material-ui/core/IconButton';
+// import Robot from '../icons/Robot';
+import './Footer.css';
+import UserDrawer from '../UserDrawer/UserDrawer';
+import BrewerDrawer from '../BrewerDrawer/BrewerDrawer';
 
 const Footer = (props) => (
   <footer>
     &copy; Morgan Costigan 
+    {/* IF isBrewer = false */}
         <div className="nav-right">
-      {props.user.username}
+        <UserDrawer>
+          {props.user.username} 
+        </UserDrawer>
+      {/* <IconButton><Robot /></IconButton> */}
         </div>
+
+
+
+        {/* IF isBrewer = true
+        <div className="nav-right">
+        <BrewerDrawer>
+          {props.user.username}
+        </BrewerDrawer>
+        <IconButton><Robot /></IconButton>
+        </div> */}
   </footer>
 );
 
@@ -15,5 +33,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(Footer);

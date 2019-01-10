@@ -11,6 +11,7 @@ footer {
 
 .nav-right {
   float: right;
+  padding-left: 100;
 }
 
 /* .Site {

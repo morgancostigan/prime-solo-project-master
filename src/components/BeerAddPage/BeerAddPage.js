@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TagSelector from '../TagSelector/TagSelector'
 
 class BeerAddPage extends Component {
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_TAGS' })
+    }
+
     state = {
         name: '',
         style: '',
@@ -45,6 +51,9 @@ class BeerAddPage extends Component {
 
     render() {
         return (
+            // <ProtectedBrewerRoute
+
+            // />
             <div>
                 {this.props.errors.registrationMessage && (
                     <h2
@@ -55,7 +64,7 @@ class BeerAddPage extends Component {
                     </h2>
                 )}
                 <form onSubmit={this.postNewBeer}>
-                    <h1>Register User</h1>
+                    <h1>Post New Beer</h1>
                     <div>
                         <label htmlFor="name">
                             Beer Name:
@@ -115,7 +124,7 @@ class BeerAddPage extends Component {
 
 {/* //////////////////////////////this is where the style tags will be input */}
 
-
+                    <div><TagSelector/></div>
 
 
                 </form>

@@ -11,11 +11,13 @@ import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ProtectedBrewerRoute from '../ProtectedBrewerRoute/ProtectedBrewerRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import BeerAddPage from '../BeerAddPage/BeerAddPage';
 
 import './App.css';
 
@@ -54,6 +56,11 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedBrewerRoute
+              exact
+              path="/add-beer"
+              component={BeerAddPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

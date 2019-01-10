@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
@@ -9,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
@@ -35,6 +33,8 @@ const styles = theme => ({
     },
     actions: {
         display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',      //trying to center the cards, esp on mobile
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -57,7 +57,7 @@ const styles = theme => ({
     }
 });
 
-class BeerItem extends React.Component {
+class BeerItem extends Component {
     state = { expanded: false };
 
     handleExpandClick = () => {

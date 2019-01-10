@@ -1,10 +1,11 @@
 import React from 'react';
-import {Route} from 'react-router-dom'
+import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import RegisterBreweryPage from '../RegisterBreweryPage/RegisterBreweryPage'
-import BeerListPage from '../BeerListPage/BeerListPage'
+import RegisterBreweryPage from '../RegisterBreweryPage/RegisterBreweryPage';
+import BeerListPage from '../BeerListPage/BeerListPage';
+import BeerAddPage from '../BeerAddPage/BeerAddPage';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -32,13 +33,7 @@ const ProtectedRoute = (props) => {
   if (user.id) {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
-    if (user.isBrewer && user.brewery_id == null){
-      ComponentToShow = RegisterBreweryPage;
-    } else if (user.isBrewer && user.brewery_id != null){
-      ComponentToShow = BeerListPage;
-    } else {
     ComponentToShow = ComponentToProtect;
-    }
   } else if (loginMode === 'login') {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage
