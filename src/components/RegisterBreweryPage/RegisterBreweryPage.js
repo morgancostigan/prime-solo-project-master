@@ -58,7 +58,7 @@ class RegisterBreweryPage extends Component {
                         {this.props.errors.registrationMessage}
                     </h2>
                 )}
-                <form onSubmit={this.registerUser}>
+                <form className='RegisterBreweryForm' onSubmit={this.registerUser}>
                     <h1>Register Brewery</h1>
                     <div>
                         <label htmlFor="name">
@@ -139,10 +139,11 @@ class RegisterBreweryPage extends Component {
                     </div>       
                     <div>
                         <label htmlFor="bio">
-                            Brewery Bio:
+                            Brewery Bio: (limit 2000 characters)
                             <input
                                 type="text"
                                 name="bio"
+                                maxLength="2000"
                                 value={this.state.bio}
                                 onChange={this.handleInputChangeFor('bio')}
                             />
