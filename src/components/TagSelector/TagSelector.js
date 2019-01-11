@@ -1,61 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import Select from 'react-select';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import NoSsr from '@material-ui/core/NoSsr';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
+// import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
-import CancelIcon from '@material-ui/icons/Cancel';
-import { emphasize } from '@material-ui/core/styles/colorManipulator';
-
-const suggestions = [
-    { label: 'Afghanistan' },
-    { label: 'Aland Islands' },
-    { label: 'Albania' },
-    { label: 'Algeria' },
-    { label: 'American Samoa' },
-    { label: 'Andorra' },
-    { label: 'Angola' },
-    { label: 'Anguilla' },
-    { label: 'Antarctica' },
-    { label: 'Antigua and Barbuda' },
-    { label: 'Argentina' },
-    { label: 'Armenia' },
-    { label: 'Aruba' },
-    { label: 'Australia' },
-    { label: 'Austria' },
-    { label: 'Azerbaijan' },
-    { label: 'Bahamas' },
-    { label: 'Bahrain' },
-    { label: 'Bangladesh' },
-    { label: 'Barbados' },
-    { label: 'Belarus' },
-    { label: 'Belgium' },
-    { label: 'Belize' },
-    { label: 'Benin' },
-    { label: 'Bermuda' },
-    { label: 'Bhutan' },
-    { label: 'Bolivia, Plurinational State of' },
-    { label: 'Bonaire, Sint Eustatius and Saba' },
-    { label: 'Bosnia and Herzegovina' },
-    { label: 'Botswana' },
-    { label: 'Bouvet Island' },
-    { label: 'Brazil' },
-    { label: 'British Indian Ocean Territory' },
-    { label: 'Brunei Darussalam' },
-].map(suggestion => ({
-    value: suggestion.label,
-    label: suggestion.label,
-}));
+// import CancelIcon from '@material-ui/icons/Cancel';
+// import { emphasize } from '@material-ui/core/styles/colorManipulator';
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        height: 250,
+        height: 180,
     },
     input: {
         display: 'flex',
@@ -68,15 +29,15 @@ const styles = theme => ({
         alignItems: 'center',
         overflow: 'hidden',
     },
-    chip: {
-        margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
-    },
-    chipFocused: {
-        backgroundColor: emphasize(
-            theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700],
-            0.08,
-        ),
-    },
+    // chip: {
+    //     margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+    // },
+    // chipFocused: {
+    //     backgroundColor: emphasize(
+    //         theme.palette.type === 'light' ? theme.palette.grey[300] : theme.palette.grey[700],
+    //         0.08,
+    //     ),
+    // },
     noOptionsMessage: {
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     },
@@ -162,30 +123,16 @@ function Placeholder(props) {
     );
 }
 
-function SingleValue(props) {
-    return (
-        <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
-            {props.children}
-        </Typography>
-    );
-}
+// function SingleValue(props) {
+//     return (
+//         <Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+//             {props.children}
+//         </Typography>
+//     );
+// }
 
 function ValueContainer(props) {
     return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
-}
-
-function MultiValue(props) {
-    return (
-        <Chip
-            tabIndex={-1}
-            label={props.children}
-            className={classNames(props.selectProps.classes.chip, {
-                [props.selectProps.classes.chipFocused]: props.isFocused,
-            })}
-            onDelete={props.removeProps.onClick}
-            deleteIcon={<CancelIcon {...props.removeProps} />}
-        />
-    );
 }
 
 function Menu(props) {
@@ -199,25 +146,29 @@ function Menu(props) {
 const components = {
     Control,
     Menu,
-    MultiValue,
     NoOptionsMessage,
     Option,
     Placeholder,
-    SingleValue,
+    // SingleValue,
     ValueContainer,
 };
 
-class TagSelector extends React.Component {
+class TagSelector extends Component {
     state = {
+        tag1: '',
+        tag2: '',
+        tag3: '',
         single: null,
         multi: null,
     };
 
     handleChange = name => value => {
+        this.props.handleUpdateTags(name, value)
         this.setState({
             [name]: value,
         });
     };
+
 
     render() {
         const { classes, theme } = this.props;
@@ -238,28 +189,31 @@ class TagSelector extends React.Component {
                     <Select
                         classes={classes}
                         styles={selectStyles}
-                        options={suggestions}
+                        options={this.props.reduxStore.tag}
                         components={components}
-                        value={this.state.single}
-                        onChange={this.handleChange('single')}
-                        placeholder="Search a country (start with a)"
+                        value={this.state.tag1}
+                        onChange={this.handleChange('tag1')}
+                        placeholder="Add a Style Tag"
                     />
                     <div className={classes.divider} />
                     <Select
                         classes={classes}
                         styles={selectStyles}
-                        textFieldProps={{
-                            label: 'Label',
-                            InputLabelProps: {
-                                shrink: true,
-                            },
-                        }}
-                        options={suggestions}
+                        options={this.props.reduxStore.tag}
                         components={components}
-                        value={this.state.multi}
-                        onChange={this.handleChange('multi')}
-                        placeholder="Select multiple countries"
-                        isMulti
+                        value={this.state.tag2}
+                        onChange={this.handleChange('tag2')}
+                        placeholder="Add a Style Tag"
+                    />
+                    <div className={classes.divider} />
+                    <Select
+                        classes={classes}
+                        styles={selectStyles}
+                        options={this.props.reduxStore.tag}
+                        components={components}
+                        value={this.state.tag3}
+                        onChange={this.handleChange('tag3')}
+                        placeholder="Add a Style Tag"
                     />
                 </NoSsr>
             </div>
@@ -272,4 +226,9 @@ TagSelector.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(TagSelector);
+// Instead of taking everything from state, we just want the tag info.
+const mapStateToProps = reduxStore => ({
+    reduxStore,
+});
+
+export default connect(mapStateToProps)(withStyles(styles, { withTheme: true })(TagSelector));

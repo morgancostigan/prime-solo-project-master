@@ -3,9 +3,6 @@ import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import RegisterBreweryPage from '../RegisterBreweryPage/RegisterBreweryPage';
-import BeerListPage from '../BeerListPage/BeerListPage';
-import BeerAddPage from '../BeerAddPage/BeerAddPage';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component

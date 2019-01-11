@@ -17,6 +17,15 @@ form {
     border-radius: 2px;
 }
 
+.AddBeerForm {
+    background-color: #dbd5d5;
+    width: 300px;
+    height: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
+}
+
 input {
     margin: 5px;
     margin-bottom: 10px;

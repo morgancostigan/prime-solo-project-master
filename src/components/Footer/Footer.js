@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 // import Robot from '../icons/Robot';
 import './Footer.css';
 import UserDrawer from '../UserDrawer/UserDrawer';
-import BrewerDrawer from '../BrewerDrawer/BrewerDrawer';
+// import BrewerDrawer from '../BrewerDrawer/BrewerDrawer';
 
 const Footer = (props) => (
   <footer>

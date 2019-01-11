@@ -15,6 +15,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Chip from '@material-ui/core/Chip'; 
+
 
 const styles = theme => ({
     card: {
@@ -22,9 +24,18 @@ const styles = theme => ({
         minWidth: 350,
         maxHeight: 1500,
         minHeight: 400,
+        margin: 10,
+    },
+    chip: {
+        margin: '0px 5px 10px 5px'
+        // marginLeft: 5,
+        // marginRight: 5,
+        // marginBottom: 10,
+    },
+    chips:{
+        justifyContent: 'center',
     },
     media: {
-        height: 0,
         paddingTop: '40%', // 16:9
         maxHeight: '100%',
         maxWidth: '100%',
@@ -87,15 +98,13 @@ class BeerItem extends Component {
                     <Typography className={classes.h4} component="h4">
                         {this.props.style}
           </Typography>
-                    <Typography component="p">
-                        {this.props.tag1}
-                    </Typography>
-                    <Typography component="p">
-                        {this.props.tag2}
-                    </Typography>
-                    <Typography component="p">
-                        {this.props.tag3}
-                    </Typography>
+                    <div className={classes.chips} >
+                        <Chip label={this.props.tag1} className={classes.chip}/>
+                        <Chip label={this.props.tag2} className={classes.chip} />
+                        <Chip label={this.props.tag3} className={classes.chip} />
+                    </div>
+                    
+
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
                     <IconButton aria-label="Add to favorites">

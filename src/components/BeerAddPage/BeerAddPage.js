@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TagSelector from '../TagSelector/TagSelector'
+import TagSelector from '../TagSelector/TagSelector';
+import { withRouter } from "react-router-dom";
+
 
 class BeerAddPage extends Component {
 
@@ -11,7 +13,7 @@ class BeerAddPage extends Component {
     state = {
         name: '',
         style: '',
-        image_url: 1,
+        image_url: '',
         description: '',
         release: '',
         tag1: '',
@@ -26,6 +28,7 @@ class BeerAddPage extends Component {
             this.props.dispatch({
                 type: 'POST_BEER',
                 payload: {
+                    brewery_id: this.props.user.brewery_id,
                     name: this.state.name,
                     style: this.state.style,
                     release: this.state.release,
@@ -34,10 +37,9 @@ class BeerAddPage extends Component {
                     tag1: this.state.tag1,
                     tag2: this.state.tag2,
                     tag3: this.state.tag3,
-                    brewery_id: this.props.user.id,
-
                 },
-            });
+            })
+                    this.props.history.push("/home");
         } else {
             this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
         }
@@ -49,11 +51,16 @@ class BeerAddPage extends Component {
         });
     }
 
-    render() {
-        return (
-            // <ProtectedBrewerRoute
+    handleUpdateTags = (property, value) => {
+        this.setState({[property]: value.id})
+        // console.log('property, value', property, value);
+        
+    }
 
-            // />
+    render() {
+        // console.log('this.state', this.state);
+        
+        return (
             <div>
                 {this.props.errors.registrationMessage && (
                     <h2
@@ -63,7 +70,7 @@ class BeerAddPage extends Component {
                         {this.props.errors.registrationMessage}
                     </h2>
                 )}
-                <form onSubmit={this.postNewBeer}>
+                <form className='AddBeerForm' onSubmit={this.postNewBeer}>
                     <h1>Post New Beer</h1>
                     <div>
                         <label htmlFor="name">
@@ -121,22 +128,17 @@ class BeerAddPage extends Component {
                             />
                         </label>
                     </div>
-
 {/* //////////////////////////////this is where the style tags will be input */}
-
-                    <div><TagSelector/></div>
-
-
+                    <div><TagSelector handleUpdateTags={this.handleUpdateTags}/></div>
+                    <div>
+                        <input
+                        className="SubmitNewBeer"
+                        type="submit"
+                        name="submit"
+                        value="Submit New Beer"
+                    />
+                    </div>
                 </form>
-                <center>
-                    <button
-                        type="button"
-                        className="link-button"
-                        onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
-                    >
-                        Login
-          </button>
-                </center>
             </div>
         );
     }
@@ -145,9 +147,12 @@ class BeerAddPage extends Component {
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({errors}) => ({ errors });
+
 const mapStateToProps = state => ({
+    user: state.user,
     errors: state.errors,
 });
 
-export default connect(mapStateToProps)(BeerAddPage);
+export default connect(mapStateToProps)(withRouter(BeerAddPage));
+
 
