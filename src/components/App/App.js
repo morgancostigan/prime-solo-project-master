@@ -18,6 +18,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import BeerAddPage from '../BeerAddPage/BeerAddPage';
+import Portfolio from '../Portfolio/Portfolio';
 
 import './App.css';
 
@@ -57,10 +58,17 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+            {/* This is a protected route for brewers to add new beers to the calendar */}
             <ProtectedBrewerRoute
               exact
               path="/add-beer"
               component={BeerAddPage}
+            />
+            {/* This is a protected route for brewers to see all their beers in an admin capacity */}
+            <ProtectedBrewerRoute
+              exact
+              path="/portfolio"
+              component={Portfolio}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

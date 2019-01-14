@@ -34,6 +34,7 @@ class RegisterBreweryPage extends Component {
                     user: this.props.user.id
                 },
             });
+         this.props.history.push("/home");
         }
 
         else {

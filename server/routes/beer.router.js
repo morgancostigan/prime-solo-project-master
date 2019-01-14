@@ -19,6 +19,18 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/portfolio', rejectUnauthenticated, (req, res) => {
+    console.log('req.query.id', req.query.id);
+
+    pool.query(`SELECT * FROM "beer" WHERE "brewery_id" = $1`, [req.query.id])
+        .then(result => {
+            res.send(result.rows)
+        }).catch(err => {
+            console.log('error in getting beer:', err);
+            res.sendStatus(500)
+        })
+})
+
 /**
  * Logged in user can post new Beer
  */

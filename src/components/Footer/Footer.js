@@ -7,27 +7,20 @@ import UserDrawer from '../UserDrawer/UserDrawer';
 // import BrewerDrawer from '../BrewerDrawer/BrewerDrawer';
 
 const Footer = (props) => (
+
   <footer>
     &copy; Morgan Costigan 
     {/* IF isBrewer = false */}
-        <div className="nav-right">
+    <div className="nav-right">
         <UserDrawer>
           {props.user.username} 
         </UserDrawer>
       {/* <IconButton><Robot /></IconButton> */}
         </div>
 
-
-
-        {/* IF isBrewer = true
-        <div className="nav-right">
-        <BrewerDrawer>
-          {props.user.username}
-        </BrewerDrawer>
-        <IconButton><Robot /></IconButton>
-        </div> */}
   </footer>
 );
+
 
 const mapStateToProps = state => ({
   user: state.user,
