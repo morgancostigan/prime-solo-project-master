@@ -5,11 +5,12 @@ footer {
     left: 0;
     right: 0;
     height: 4%;
-    background-color: #00acb0;
+    background-color: #bb4100;
     color: #f2f2f2;
 }
 
 .nav-right {
+  vertical-align: center;
   float: right;
   padding-left: 100;
   color: #f2f2f2;

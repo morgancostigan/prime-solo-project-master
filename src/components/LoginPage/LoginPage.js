@@ -66,6 +66,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <input
+              style={{ backgroundColor: '#bb4100'}}
               className="log-in"
               type="submit"
               name="submit"

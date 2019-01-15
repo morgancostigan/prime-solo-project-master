@@ -20,7 +20,7 @@ class Portfolio extends Component {
         return (
             <div>
                 {/* <p> {JSON.stringify({this.props.reduxStore.beer})} </p> */}
-
+                <h3>Portfolio</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {/* Render each item from the beer reducer */}
                     {this.props.reduxStore.beer.map((each) => {

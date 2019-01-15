@@ -27,12 +27,11 @@ const styles = theme => ({
         maxHeight: 1500,
         minHeight: 400,
         margin: 10,
+        backgroundColor: '#ffffff',
     },
     chip: {
-        margin: '0px 5px 10px 5px'
-        // marginLeft: 5,
-        // marginRight: 5,
-        // marginBottom: 10,
+        margin: '0px 5px 10px 5px',
+        color: '#00acb0',
     },
     chips:{
         justifyContent: 'center',

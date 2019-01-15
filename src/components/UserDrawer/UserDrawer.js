@@ -31,6 +31,9 @@ const styles = {
     brewerList:{
         width: 'auto',
     },
+    link:{
+        textDecoration: 'none',
+    },
     fullList: {
         width: 'auto',
     },
@@ -72,16 +75,18 @@ class UserDrawer extends React.Component {
         brewerList = (
             <div className={classes.brewerList}>
                 <List>
-                    <Link to="/add-beer">
+                    <Link className={classes.link} to="/add-beer">
                     <ListItem>
                         <ListItemIcon><LocalDrinkIcon /></ListItemIcon>
                         <ListItemText primary={'Add Beer'} />
                     </ListItem>
                     </Link>
+                    <Link className={classes.link} to='/portfolio'>
                     <ListItem>
                         <ListItemIcon><ViewListIcon /></ListItemIcon>
                         <ListItemText primary={'View Our Portfolio'} />
                     </ListItem>
+                    </Link>
                 </List>
                 <Divider />
             </div>
@@ -90,18 +95,24 @@ class UserDrawer extends React.Component {
         fullList = (
             <div className={classes.fullList}>
                 <List>
-                    <ListItem>
-                        <ListItemIcon><SearchRoundedIcon/></ListItemIcon>
-                        <ListItemText primary={'Search / Filter'} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon><CalendarIcon /></ListItemIcon>
-                        <ListItemText primary={'View My Calendar'} />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon><EditIcon /></ListItemIcon>
-                        <ListItemText primary={'Edit My Profile'} />
-                    </ListItem>
+                    <Link className={classes.link} to='/search'>
+                        <ListItem>
+                            <ListItemIcon><SearchRoundedIcon /></ListItemIcon>
+                            <ListItemText primary={'Search / Filter'} />
+                        </ListItem>
+                    </Link>
+                    <Link className={classes.link} to='/calendar'>
+                        <ListItem>
+                            <ListItemIcon><CalendarIcon /></ListItemIcon>
+                            <ListItemText primary={'View My Calendar'} />
+                        </ListItem>
+                    </Link>
+                    <Link className={classes.link} to='/edit-profile'>
+                        <ListItem>
+                            <ListItemIcon><EditIcon /></ListItemIcon>
+                            <ListItemText primary={'Edit My Profile'} />
+                        </ListItem>
+                    </Link>
                 </List>
                 <Divider />
             </div>
@@ -110,7 +121,7 @@ class UserDrawer extends React.Component {
             loginLogout = (
                 <div className={classes.loginLogout}>
                     <List>
-                    <Link to="/home">
+                        <Link className={classes.link} to="/home">
                         <ListItem>
                             <ListItemIcon><HomeIcon /></ListItemIcon>
                             <ListItemText primary={'Home'} />
@@ -121,7 +132,11 @@ class UserDrawer extends React.Component {
                             <ListItemIcon><LockIcon /></ListItemIcon>  
                             <ListItemText primary={'Log Out'} />
                         </ListItem>
-                    </LogOutButton>                     
+                    </LogOutButton>   
+                        <ListItem>
+                            <Button onClick={this.toggleDrawer('bottom', true)}>{this.props.user.username}</Button>
+                        </ListItem>
+                  
                     </List>
                 </div>
             );
@@ -131,18 +146,24 @@ class UserDrawer extends React.Component {
             fullList = (
                 <div className={classes.fullList}>
                     <List>
+                        <Link className={classes.link} to='/search'>
                         <ListItem>
                             <ListItemIcon><SearchRoundedIcon /></ListItemIcon>
                             <ListItemText primary={'Search / Filter'} />
                         </ListItem>
+                        </Link>
+                        <Link className={classes.link} to='/calendar'>
                         <ListItem>
                             <ListItemIcon><CalendarIcon /></ListItemIcon>
                             <ListItemText primary={'View My Calendar'} />
                         </ListItem>
+                        </Link>
+                        <Link className={classes.link} to='/edit-profile'>
                         <ListItem>
                             <ListItemIcon><EditIcon /></ListItemIcon>
                             <ListItemText primary={'Edit My Profile'} />
                         </ListItem>
+                        </Link>
                     </List>
                     <Divider />
                 </div>
@@ -151,18 +172,23 @@ class UserDrawer extends React.Component {
             loginLogout = (
                 <div className={classes.loginLogout}>
                     <List>
-                        <Link to="/home">
+                        <Link className={classes.link} to="/home">
                             <ListItem>
                                 <ListItemIcon><HomeIcon /></ListItemIcon>
                                 <ListItemText primary={'Home'} />
                             </ListItem>
                         </Link>
-                        <LogOutButton className={classes.linkButton}>
+                        
                             <ListItem>
-                                <ListItemIcon><LockIcon /></ListItemIcon>
-                                <ListItemText primary={'Log Out'} />
+                                <LockIcon style={{color: '#757575'}}/>
+
+                                <LogOutButton className={classes.linkButton}>
+                                </LogOutButton> 
                             </ListItem>
-                        </LogOutButton> 
+
+                            <ListItem>
+                            <Button onClick={this.toggleDrawer('bottom', true)}>{this.props.user.username}</Button>
+                            </ListItem>
                     </List>
                 </div>
             );
@@ -171,7 +197,7 @@ class UserDrawer extends React.Component {
             loginLogout = (
                 <div className={classes.loginLogout}>
                     <List>
-                        <Link to="/home">
+                        <Link className={classes.link} to="/home">
                             <ListItem>
                                 <ListItemIcon><HomeIcon /></ListItemIcon>
                                 <ListItemText primary={'Home'} />
@@ -179,12 +205,15 @@ class UserDrawer extends React.Component {
                         </Link>
                     </List>
                     <List>
-                        <Link to="/home">
+                        <Link className={classes.link} to="/home">
                         <ListItem>
                             <ListItemIcon><LockIcon /></ListItemIcon>
                             <ListItemText primary={'Log In / Register'} />
                         </ListItem>
                         </Link>
+                        <ListItem>
+                            <Button onClick={this.toggleDrawer('bottom', true)}>{this.props.user.username}</Button>
+                        </ListItem>
                     </List>
                 </div>
             );
