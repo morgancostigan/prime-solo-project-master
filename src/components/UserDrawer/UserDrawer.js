@@ -65,7 +65,7 @@ class UserDrawer extends React.Component {
     };
 
     render( props ) {
-        if (this.props.user.id && this.props.user.isBrewer) { 
+        if (this.props.user.id && this.props.user.isBrewer === true) { 
 
         const { classes } = this.props;
 

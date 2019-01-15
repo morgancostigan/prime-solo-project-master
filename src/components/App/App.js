@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   HashRouter as Router,
   Route,
+  Link,
   Redirect,
   Switch,
 } from 'react-router-dom';

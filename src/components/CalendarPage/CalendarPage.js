@@ -23,7 +23,7 @@ class CalendarPage extends Component {
 
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {/* Render each item from the beer reducer */}
-                    {this.props.reduxStore.beer.map((each) => {
+                    {this.props.reduxStore.calendar.map((each) => {
                         return (<PortfolioItem
                             key={each.id}
                             id={each.id} //this is NEEDED for delete
