@@ -4,6 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import beer from './beerReducer';
 import tag from './tagReducer';
+import calendar from './calendarReducer';
 import tagsUsed from './tagsUsedReducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   beer, // will store all the beers (or filtered search results)
   tag,
+  calendar,
   tagsUsed,
 });
 

@@ -11,13 +11,11 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import CalendarIcon from '@material-ui/icons/CalendarToday';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import StarIcon from '@material-ui/icons/Star';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Chip from '@material-ui/core/Chip'; 
+import Chip from '@material-ui/core/Chip';
 
 
 const styles = theme => ({
@@ -34,7 +32,7 @@ const styles = theme => ({
         // marginRight: 5,
         // marginBottom: 10,
     },
-    chips:{
+    chips: {
         justifyContent: 'center',
     },
     media: {
@@ -70,21 +68,11 @@ const styles = theme => ({
     }
 });
 
-class BeerItem extends Component {
+class PortfolioItem extends Component {
     state = { expanded: false };
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
-    };
-
-    addToCalendar = () => {
-        this.props.dispatch({
-            type: 'POST_TO_CALENDAR',
-            payload: {
-                beer_id: this.props.id,
-                user_id: this.props.reduxStore.user.id,
-            }
-        })
     };
 
     render() {
@@ -109,22 +97,18 @@ class BeerItem extends Component {
                 <CardContent>
                     <Typography className={classes.h4} component="h4">
                         {this.props.style}
-          </Typography>
+                    </Typography>
                     <div className={classes.chips} >
-                        <Chip label={this.props.tag1} className={classes.chip}/>
+                        <Chip label={this.props.tag1} className={classes.chip} />
                         <Chip label={this.props.tag2} className={classes.chip} />
                         <Chip label={this.props.tag3} className={classes.chip} />
                     </div>
-                    
+
 
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="Add to calendar"
-                        onClick={this.addToCalendar}>
-                        <CalendarIcon />
-                    </IconButton>
-                    <IconButton aria-label="Follow Brewery">
-                        <StarBorderIcon />
+                    <IconButton aria-label="Add to favorites">
+                        <FavoriteIcon />
                     </IconButton>
                     <IconButton aria-label="Share">
                         <ShareIcon />
@@ -143,7 +127,7 @@ class BeerItem extends Component {
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>{this.props.description}</Typography>
-                    
+
                     </CardContent>
                 </Collapse>
             </Card>
@@ -157,4 +141,4 @@ const mapStateToProps = reduxStore => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(withStyles(styles)(BeerItem));
+export default connect(mapStateToProps)(withStyles(styles)(PortfolioItem));

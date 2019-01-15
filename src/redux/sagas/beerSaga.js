@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 // worker Saga: will be fired on "FETCH_BEER" actions
@@ -25,7 +25,7 @@ function* fetchBeer() {
     }
 }
 
-// worker Saga: will be fired on "FETCH_BEER" actions
+// worker Saga: will be fired on "FETCH_OUR_BEER" actions
 function* fetchOurBeer(action) {
     try {
         const config = {

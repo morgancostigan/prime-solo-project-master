@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const beerRouter = require('./routes/beer.router');
 const breweryRouter = require('./routes/brewery.router');
 const tagRouter = require('./routes/tag.router');
+const calendarRouter = require('./routes/calendar.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/beer', beerRouter);
 app.use('/api/brewery', breweryRouter);
 app.use('/api/tags', tagRouter)
+app.use('/api/calendar', calendarRouter)
 
 // Serve static files
 app.use(express.static('build'));

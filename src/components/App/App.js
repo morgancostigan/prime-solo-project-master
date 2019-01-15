@@ -19,6 +19,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import BeerAddPage from '../BeerAddPage/BeerAddPage';
 import Portfolio from '../Portfolio/Portfolio';
+import CalendarPage from '../CalendarPage/CalendarPage';
 
 import './App.css';
 
@@ -51,13 +52,13 @@ class App extends Component {
               path="/home"
               component={UserPage}
             />
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will see the info page instead. */}
+            {/* This is a route to see a users calendar page of saved beers. */}
             <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
+              path="/calendar"
+              component={CalendarPage}
             />
+
             {/* This is a protected route for brewers to add new beers to the calendar */}
             <ProtectedBrewerRoute
               exact

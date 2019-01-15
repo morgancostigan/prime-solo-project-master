@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BeerItem from '../BeerItem/BeerItem';
+import PortfolioItem from '../PortfolioItem/PortfolioItem';
 
 class Portfolio extends Component {
 
@@ -19,12 +19,12 @@ class Portfolio extends Component {
     render() {
         return (
             <div>
-                <p> {JSON.stringify({this.props.reduxStore.beer})} </p>
+                {/* <p> {JSON.stringify({this.props.reduxStore.beer})} </p> */}
 
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {/* Render each item from the beer reducer */}
-                    {/* {this.props.reduxStore.beer.map((each) => {
-                        return (<BeerItem
+                    {this.props.reduxStore.beer.map((each) => {
+                        return (<PortfolioItem
                             key={each.id}
                             id={each.id} //this is NEEDED for delete
                             image={each.logo_url}
@@ -36,7 +36,7 @@ class Portfolio extends Component {
                             tag1={each.tag_list[0]}
                             tag2={each.tag_list[1]}
                             tag3={each.tag_list[2]} />);
-                    })} */}
+                    })}
                 </div>
             </div>
         )
