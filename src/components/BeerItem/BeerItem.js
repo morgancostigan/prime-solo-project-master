@@ -87,6 +87,16 @@ class BeerItem extends Component {
         })
     };
 
+    addToFollows = () => {
+        this.props.dispatch({
+            type: 'POST_TO_FOLLOWS',
+            payload: {
+                brewery_id: this.props.brewery_id,
+                user_id: this.props.reduxStore.user.id,
+            }
+        })
+    };
+
     render() {
         const { classes } = this.props;
 
@@ -123,7 +133,8 @@ class BeerItem extends Component {
                         onClick={this.addToCalendar}>
                         <CalendarIcon />
                     </IconButton>
-                    <IconButton aria-label="Follow Brewery">
+                    <IconButton aria-label="Follow Brewery"
+                        onClick={this.addToFollows}>
                         <StarBorderIcon />
                     </IconButton>
                     <IconButton aria-label="Share">

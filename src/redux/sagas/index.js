@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import beerSaga from './beerSaga';
 import tagSaga from './tagSaga';
 import calendarSaga from './calendarSaga';
+import followsSaga from './followsSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     beerSaga(),
     tagSaga(),
     calendarSaga(),
+    followsSaga(),
   ]);
 }

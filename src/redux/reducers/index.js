@@ -6,6 +6,7 @@ import beer from './beerReducer';
 import tag from './tagReducer';
 import calendar from './calendarReducer';
 import tagsUsed from './tagsUsedReducer';
+import follows from './followsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   tag,
   calendar,
   tagsUsed,
+  follows,
 });
 
 export default rootReducer;

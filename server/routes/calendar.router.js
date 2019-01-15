@@ -22,12 +22,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 router.get('/mycalendar', rejectUnauthenticated, (req, res) => {
     let queryText = (`SELECT "beer"."name" AS "beer_name", "beer"."id", "beer"."style", 
         to_char ("beer"."release", 'Mon dd, YYYY') as "release", "beer"."description", 
-        "brewery"."logo_url", array_agg( DISTINCT "style"."tag") AS "tag_list" FROM "beer" 
+        "brewery"."id" as "brewery_id", "brewery"."logo_url", array_agg( DISTINCT "style"."tag") 
+        AS "tag_list" FROM "beer" 
         JOIN "brewery" ON "brewery"."id" = "beer"."brewery_id" 
         JOIN "style_beer" ON "beer"."id" = "style_beer"."beer_id" 
         JOIN "style" ON "style"."id" = "style_beer"."style_id" 
         JOIN "calendar" ON "calendar"."beer_id" = "beer"."id" 
-        WHERE "user_id" = $1 GROUP BY "beer"."name", "beer"."id", "brewery"."logo_url";`);
+        WHERE "user_id" = $1 GROUP BY "beer"."name", "beer"."id", 
+        "brewery"."logo_url", "brewery"."id";`);
     pool.query(queryText, [req.query.id]).then((result) => {
         console.log('result.rows', result.rows);
         res.send(result.rows);
