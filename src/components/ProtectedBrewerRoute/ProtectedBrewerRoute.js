@@ -5,7 +5,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import BrewerWall from '../BrewerWall/BrewerWall';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import RegisterBreweryPage from '../RegisterBreweryPage/RegisterBreweryPage';
-import Portfolio from '../Portfolio/Portfolio';
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component

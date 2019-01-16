@@ -11,12 +11,9 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Chip from '@material-ui/core/Chip';
 
 
@@ -29,10 +26,8 @@ const styles = theme => ({
         margin: 10,
     },
     chip: {
-        margin: '0px 5px 10px 5px'
-        // marginLeft: 5,
-        // marginRight: 5,
-        // marginBottom: 10,
+        margin: '0px 5px 10px 5px',
+        color: '#00acb0',
     },
     chips: {
         justifyContent: 'center',

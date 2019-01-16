@@ -15,7 +15,7 @@ function* deleteBeer(action) {
         // allow the server session to recognize the user
         // If a user is logged in, this will return their information
         // from the server session (req.user)
-        const response = yield axios.delete(`api/beer/${action.payload.beer_id}`, config);
+        yield axios.delete(`api/beer/${action.payload.beer_id}`, config);
 
         // now that the session has given us a user object
         // with an id and username set the client-side user object to let

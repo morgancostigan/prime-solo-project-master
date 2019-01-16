@@ -7,8 +7,6 @@ import UserDrawer from '../UserDrawer/UserDrawer';
 // import BrewerDrawer from '../BrewerDrawer/BrewerDrawer';
 
 const Footer = (props) => (
-console.log('prpos.usr.usernaaam', props.user.username),
-
   <footer>
     &copy; Morgan Costigan 
     {/* IF isBrewer = false */}

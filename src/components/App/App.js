@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {
   HashRouter as Router,
   Route,
-  Link,
   Redirect,
   Switch,
 } from 'react-router-dom';
@@ -17,7 +16,6 @@ import ProtectedBrewerRoute from '../ProtectedBrewerRoute/ProtectedBrewerRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import BeerAddPage from '../BeerAddPage/BeerAddPage';
 import Portfolio from '../Portfolio/Portfolio';
 import CalendarPage from '../CalendarPage/CalendarPage';
