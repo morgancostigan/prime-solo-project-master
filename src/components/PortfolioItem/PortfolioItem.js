@@ -12,6 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -75,6 +77,17 @@ class PortfolioItem extends Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    deleteFromPortfolio = () => {
+        this.props.dispatch({
+            type: 'DELETE_BEER_TAGS',
+            payload: {
+                beer_id: this.props.id,
+                user_id: this.props.reduxStore.user.id,
+            },
+            refresh: this.props.brewery_id
+        })
+    };
+
     render() {
         const { classes } = this.props;
 
@@ -83,7 +96,7 @@ class PortfolioItem extends Component {
                 <CardHeader
                     action={
                         <IconButton>
-                            <MoreVertIcon />
+                            {/* <MoreVertIcon /> */}
                         </IconButton>
                     }
                     title={this.props.beer}
@@ -107,11 +120,12 @@ class PortfolioItem extends Component {
 
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="Add to favorites">
-                        <FavoriteIcon />
+                    <IconButton aria-label="Delete"
+                        onClick={this.deleteFromPortfolio}>
+                        <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-label="Share">
-                        <ShareIcon />
+                    <IconButton aria-label="Edit">
+                        <EditIcon />
                     </IconButton>
                     <IconButton
                         className={classnames(classes.expand, {

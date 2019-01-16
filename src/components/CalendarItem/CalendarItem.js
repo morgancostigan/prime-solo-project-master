@@ -11,13 +11,13 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import CalendarIcon from '@material-ui/icons/CalendarToday';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import StarIcon from '@material-ui/icons/Star';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Chip from '@material-ui/core/Chip'; 
+import Chip from '@material-ui/core/Chip';
 
 
 const styles = theme => ({
@@ -27,14 +27,14 @@ const styles = theme => ({
         maxHeight: 1500,
         minHeight: 400,
         margin: 10,
-        marginBottom:25,
-        backgroundColor: '#ffffff',
     },
     chip: {
-        margin: '0px 5px 10px 5px',
-        color: '#00acb0',
+        margin: '0px 5px 10px 5px'
+        // marginLeft: 5,
+        // marginRight: 5,
+        // marginBottom: 10,
     },
-    chips:{
+    chips: {
         justifyContent: 'center',
     },
     media: {
@@ -70,30 +70,21 @@ const styles = theme => ({
     }
 });
 
-class BeerItem extends Component {
+class CalendarItem extends Component {
     state = { expanded: false };
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
-    addToCalendar = () => {
+    deleteFromCalendar = () => {
         this.props.dispatch({
-            type: 'POST_TO_CALENDAR',
-            refresh: {
+            type: 'DELETE_FROM_CALENDAR',
+            payload: {
                 beer_id: this.props.id,
                 user_id: this.props.reduxStore.user.id,
-            }
-        })
-    };
-
-    addToFollows = () => {
-        this.props.dispatch({
-            type: 'POST_TO_FOLLOWS',
-            payload: {
-                brewery_id: this.props.brewery_id,
-                user_id: this.props.reduxStore.user.id,
-            }
+            },
+            refresh: this.props.reduxStore.user.id
         })
     };
 
@@ -119,27 +110,23 @@ class BeerItem extends Component {
                 <CardContent>
                     <Typography className={classes.h4} component="h4">
                         {this.props.style}
-          </Typography>
+                    </Typography>
                     <div className={classes.chips} >
-                        <Chip label={this.props.tag1} className={classes.chip}/>
+                        <Chip label={this.props.tag1} className={classes.chip} />
                         <Chip label={this.props.tag2} className={classes.chip} />
                         <Chip label={this.props.tag3} className={classes.chip} />
                     </div>
-                    
+
 
                 </CardContent>
                 <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="Add to calendar"
-                        onClick={this.addToCalendar}>
-                        <CalendarIcon />
+                    <IconButton aria-label="Delete"
+                        onClick={this.deleteFromCalendar}>
+                        <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-label="Follow Brewery"
-                        onClick={this.addToFollows}>
-                        <StarBorderIcon />
+                    <IconButton aria-label="Edit">
+                        <EditIcon />
                     </IconButton>
-                    {/* <IconButton aria-label="Share">
-                        <ShareIcon />
-                    </IconButton> */}
                     <IconButton
                         className={classnames(classes.expand, {
                             [classes.expandOpen]: this.state.expanded,
@@ -154,7 +141,7 @@ class BeerItem extends Component {
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>{this.props.description}</Typography>
-                    
+
                     </CardContent>
                 </Collapse>
             </Card>
@@ -168,4 +155,4 @@ const mapStateToProps = reduxStore => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(withStyles(styles)(BeerItem));
+export default connect(mapStateToProps)(withStyles(styles)(CalendarItem));

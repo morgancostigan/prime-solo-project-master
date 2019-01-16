@@ -3,13 +3,25 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('req.params', req.params);
+    let queryText = (`DELETE FROM "calendar" WHERE "beer_id" = $1;`);
+    pool.query(queryText, [req.params.id]).then((result) => {
+        console.log('result.rows', result.rows);
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    });
+});
+
 /**
  * Logged in user can post to calendar
  */
 router.post('/', rejectUnauthenticated, (req, res) => {
-    console.log('req.body', req.body);
+    console.log('post req.body', req.body);
     const queryText = `INSERT INTO "calendar" ("user_id", "beer_id") 
-        VALUES ($1, $2)`
+        VALUES ($1, $2);`;
     pool.query(queryText, [req.body.user_id, req.body.beer_id])
         .then(result => {
             res.sendStatus(201);
@@ -20,6 +32,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/mycalendar', rejectUnauthenticated, (req, res) => {
+    console.log('in mycalender req.query.id', req.query);
+    
     let queryText = (`SELECT "beer"."name" AS "beer_name", "beer"."id", "beer"."style", 
         to_char ("beer"."release", 'Mon dd, YYYY') as "release", "beer"."description", 
         "brewery"."id" as "brewery_id", "brewery"."logo_url", array_agg( DISTINCT "style"."tag") 

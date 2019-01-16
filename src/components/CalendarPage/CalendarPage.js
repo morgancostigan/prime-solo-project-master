@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PortfolioItem from '../PortfolioItem/PortfolioItem';
+import CalendarItem from '../CalendarItem/CalendarItem';
 
 class CalendarPage extends Component {
 
@@ -12,7 +12,7 @@ class CalendarPage extends Component {
         // console.log('getMyCalendar');
         this.props.dispatch({
             type: 'FETCH_CALENDAR',
-            payload: this.props.reduxStore.user.id
+            refresh: this.props.reduxStore.user.id
         });
     }//end getMyCalendar
 
@@ -24,7 +24,7 @@ class CalendarPage extends Component {
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {/* Render each item from the beer reducer */}
                     {this.props.reduxStore.calendar.map((each) => {
-                        return (<PortfolioItem
+                        return (<CalendarItem
                             key={each.id}
                             id={each.id} //this is NEEDED for delete
                             image={each.logo_url}

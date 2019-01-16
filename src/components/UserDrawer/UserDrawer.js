@@ -127,12 +127,12 @@ class UserDrawer extends React.Component {
                             <ListItemText primary={'Home'} />
                         </ListItem>
                     </Link>
-                    <LogOutButton className={classes.linkButton}>
                         <ListItem>
-                            <ListItemIcon><LockIcon /></ListItemIcon>  
-                            <ListItemText primary={'Log Out'} />
+                            <LockIcon style={{ color: '#757575' }} />
+
+                            <LogOutButton className={classes.linkButton}>
+                            </LogOutButton>
                         </ListItem>
-                    </LogOutButton>   
                         <ListItem>
                             <Button onClick={this.toggleDrawer('bottom', true)}>{this.props.user.username}</Button>
                         </ListItem>

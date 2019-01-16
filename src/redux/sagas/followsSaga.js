@@ -50,7 +50,7 @@ function* fetchFollows(action) {
 
 function* followsSaga() {
     yield takeLatest('POST_TO_FOLLOWS', postToFollows);
-    yield takeLatest('FETCH_CALENDAR', fetchFollows)
+    yield takeLatest('FETCH_FOLLOWS', fetchFollows)
 }
 
 export default followsSaga;

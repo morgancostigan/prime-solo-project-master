@@ -12,7 +12,7 @@ class Portfolio extends Component {
         // console.log('getOurBeerList');
         this.props.dispatch({
             type: 'FETCH_OUR_BEER',
-            payload: this.props.reduxStore.user.brewery_id
+            refresh: this.props.reduxStore.user.brewery_id
         });
     }//end getOurBeerList
 
@@ -32,6 +32,7 @@ class Portfolio extends Component {
                             beer={each.beer_name}
                             release={each.release}
                             brewery={each.name}
+                            brewery_id={each.brewery_id}
                             style={each.style}
                             tag1={each.tag_list[0]}
                             tag2={each.tag_list[1]}
