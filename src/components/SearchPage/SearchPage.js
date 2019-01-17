@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TagSelector from '../TagSelector/TagSelector';
+import TagSearcher from '../TagSearcher/TagSearcher';
+import BrewerySearcher from '../BrewerySearcher/BrewerySearcher';
 import { withRouter } from "react-router-dom";
 
 
-class BeerAddPage extends Component {
+class SearchPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_TAGS' })
+        this.props.dispatch({ type: 'FETCH_BREWERIES' })
     }
 
     state = {
@@ -16,9 +18,8 @@ class BeerAddPage extends Component {
         image_url: '',
         description: '',
         release: '',
+        brewery: '',
         tag1: '',
-        tag2: '',
-        tag3: '',
     };
 
     postNewBeer = (event) => {
@@ -39,11 +40,11 @@ class BeerAddPage extends Component {
                     tag3: this.state.tag3,
                 },
             })
-                    this.props.history.push("/home");
+            this.props.history.push("/home");
         } else {
             this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
         }
-    } // end postNewBeer
+    } // end 
 
     handleInputChangeFor = propertyName => (event) => {
         this.setState({
@@ -52,14 +53,18 @@ class BeerAddPage extends Component {
     }
 
     handleUpdateTags = (property, value) => {
-        this.setState({[property]: value.id})
+        this.setState({ [property]: value.id })
         // console.log('property, value', property, value);
-        
+    }
+
+    handleUpdateBreweries = (property, value) => {
+        this.setState({ [property]: value.id })
+        // console.log('property, value', property, value);
     }
 
     render() {
         // console.log('this.state', this.state);
-        
+
         return (
             <div>
                 {this.props.errors.registrationMessage && (
@@ -71,51 +76,12 @@ class BeerAddPage extends Component {
                     </h2>
                 )}
                 <form className='AddBeerForm' onSubmit={this.postNewBeer}>
-                    <h1>Post New Beer</h1>
-                    <div>
-                        <label htmlFor="name">
-                            Beer Name:
-              <input
-                                type="text"
-                                name="name"
-                                value={this.state.name}
-                                onChange={this.handleInputChangeFor('name')}
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label htmlFor="style">
-                            Style, be as specific as you like
-              <input
-                                type="text"
-                                name="style"
-                                value={this.state.style}
-                                onChange={this.handleInputChangeFor('style')}
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label htmlFor="image_url">
-                            Image URL (optional):
-              <input
-                                type="text"
-                                name="image_url"
-                                value={this.state.image_url}
-                                onChange={this.handleInputChangeFor('image_url')}
-                            />
-                        </label>
-                    </div>
-                    <div>
-                        <label htmlFor="description">
-                            Description - up to 1000 characters:
-              <input
-                                type="text"
-                                name="description"
-                                value={this.state.description}
-                                onChange={this.handleInputChangeFor('description')}
-                            />
-                        </label>
-                    </div>
+                    <h1>Search For Beer</h1>
+                    <div><BrewerySearcher handleUpdateBreweries={this.handleUpdateBreweries} /></div>
+
+
+
+
 
                     <div>
                         <label htmlFor="release">
@@ -128,15 +94,15 @@ class BeerAddPage extends Component {
                             />
                         </label>
                     </div>
-{/* //////////////////////////////this is where the style tags will be input */}
-                    <div><TagSelector handleUpdateTags={this.handleUpdateTags}/></div>
+                    {/* //////////////////////////////this is where the style tags will be input */}
+                    <div><TagSearcher handleUpdateTags={this.handleUpdateTags} /></div>
                     <div>
                         <input
-                        className="SubmitNewBeer"
-                        type="submit"
-                        name="submit"
-                        value="Submit New Beer"
-                    />
+                            className="SubmitNewBeer"
+                            type="submit"
+                            name="submit"
+                            value="Submit New Beer"
+                        />
                     </div>
                 </form>
             </div>
@@ -153,6 +119,6 @@ const mapStateToProps = state => ({
     errors: state.errors,
 });
 
-export default connect(mapStateToProps)(withRouter(BeerAddPage));
+export default connect(mapStateToProps)(withRouter(SearchPage));
 
 

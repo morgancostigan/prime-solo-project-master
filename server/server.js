@@ -30,10 +30,10 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/beer', beerRouter);
-app.use('/api/brewery', breweryRouter);
 app.use('/api/tags', tagRouter);
 app.use('/api/calendar', calendarRouter);
 app.use('/api/follows', followsRouter)
+app.use('/api/breweries', breweryRouter)
 
 // Serve static files
 app.use(express.static('build'));

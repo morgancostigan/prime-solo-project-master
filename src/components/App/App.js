@@ -19,6 +19,7 @@ import UserPage from '../UserPage/UserPage';
 import BeerAddPage from '../BeerAddPage/BeerAddPage';
 import Portfolio from '../Portfolio/Portfolio';
 import CalendarPage from '../CalendarPage/CalendarPage';
+import SearchPage from '../SearchPage/SearchPage';
 
 import './App.css';
 
@@ -56,6 +57,12 @@ class App extends Component {
               exact
               path="/calendar"
               component={CalendarPage}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/search"
+              component={SearchPage}
             />
 
             {/* This is a protected route for brewers to add new beers to the calendar */}
