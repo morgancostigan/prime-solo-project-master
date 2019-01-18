@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TagSelector from '../TagSelector/TagSelector';
 import { withRouter } from "react-router-dom";
-import { withRouter } from 'react-router';
 
 
 class BeerAddPage extends Component {

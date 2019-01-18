@@ -18,6 +18,7 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
+      this.props.dispatch({ type: 'CLEAR_LOGIN_ERROR'});
       this.props.history.push("/home");
 
     } else {
@@ -37,6 +38,7 @@ class LoginPage extends Component {
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
+            tim
             role="alert"
           >
             {this.props.errors.loginMessage}

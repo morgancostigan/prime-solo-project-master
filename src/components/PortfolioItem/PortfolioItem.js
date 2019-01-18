@@ -15,7 +15,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 // import EditIcon from '@material-ui/icons/Edit';  //will be used for future editing functionality
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
-import { withRouter } from 'react-router'
 
 
 
@@ -83,7 +82,7 @@ class PortfolioItem extends Component {
             },
             refresh: this.props.brewery_id
         })
-        this.props.history.push("/portfolio");  ///////this.props was failing, so is this.context
+        // this.props.history.push("/portfolio");  ///////this.props was failing, so is this.context
     };
 
     render() {

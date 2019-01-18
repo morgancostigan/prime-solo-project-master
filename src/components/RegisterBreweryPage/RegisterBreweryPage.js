@@ -34,7 +34,9 @@ class RegisterBreweryPage extends Component {
                     user: this.props.user.id
                 },
             });
-            // this.props.history.push("/home");
+            this.props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
+
+            this.props.history.push("/add-beer");
         } else {
             this.props.dispatch({ type: 'REGISTRATION_INPUT_ERROR' });
         }

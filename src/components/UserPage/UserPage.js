@@ -6,6 +6,9 @@ import BeerListPage from '../BeerListPage/BeerListPage';
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
+  props.dispatch({ type: 'CLEAR_LOGIN_ERROR' }),
+  props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' }),
+  
   <div>
     <h1 id="welcome">
       Welcome, { props.user.username }!
@@ -19,6 +22,8 @@ const UserPage = (props) => (
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = state => ({
   user: state.user,
+  loginError: state.errors,
+  registrationError: state.errors,
 });
 
 // this allows us to use <App /> in index.js

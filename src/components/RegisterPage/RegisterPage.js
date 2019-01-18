@@ -28,6 +28,8 @@ class RegisterPage extends Component {
 
         },
       });
+      this.props.dispatch({ type: 'CLEAR_REGISTRATION_ERROR' });
+
       this.props.history.push("/home");
 
     } else {

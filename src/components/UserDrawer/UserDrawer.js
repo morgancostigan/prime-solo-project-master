@@ -16,6 +16,7 @@ import CalendarIcon from '@material-ui/icons/CalendarToday';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import LockIcon from '@material-ui/icons/Lock';
 import EditIcon from '@material-ui/icons/Edit';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutlineOutlined'
 import ViewListIcon from '@material-ui/icons/ViewList';
 import { connect } from 'react-redux';
 
@@ -50,7 +51,10 @@ const styles = {
         outline: 0,
         // borderBottom: '1px solid #444',
         cursor: 'pointer',
-    }
+    },
+    drawerButton: {
+        width: '100%',
+    },
 };
 
 class UserDrawer extends React.Component {
@@ -122,11 +126,17 @@ class UserDrawer extends React.Component {
                 <div className={classes.loginLogout}>
                     <List>
                         <Link className={classes.link} to="/home">
-                        <ListItem>
-                            <ListItemIcon><HomeIcon /></ListItemIcon>
-                            <ListItemText primary={'Home'} />
-                        </ListItem>
-                    </Link>
+                            <ListItem>
+                                <ListItemIcon><HomeIcon /></ListItemIcon>
+                                <ListItemText primary={'Home'} />
+                            </ListItem>
+                        </Link>
+                        <Link className={classes.link} to="/about">
+                            <ListItem>
+                                <ListItemIcon><HelpOutlineIcon /></ListItemIcon>
+                                <ListItemText primary={'About'} />
+                            </ListItem>
+                        </Link>
                         <ListItem>
                             <LockIcon style={{ color: '#757575' }} />
 
@@ -172,10 +182,17 @@ class UserDrawer extends React.Component {
             loginLogout = (
                 <div className={classes.loginLogout}>
                     <List>
+
                         <Link className={classes.link} to="/home">
                             <ListItem>
                                 <ListItemIcon><HomeIcon /></ListItemIcon>
                                 <ListItemText primary={'Home'} />
+                            </ListItem>
+                        </Link>
+                        <Link className={classes.link} to="/about">
+                            <ListItem>
+                                <ListItemIcon><HelpOutlineIcon /></ListItemIcon>
+                                <ListItemText primary={'About'} />
                             </ListItem>
                         </Link>
                         
@@ -203,12 +220,18 @@ class UserDrawer extends React.Component {
                                 <ListItemText primary={'Home'} />
                             </ListItem>
                         </Link>
+                        <Link className={classes.link} to="/about">
+                            <ListItem>
+                                <ListItemIcon><HelpOutlineIcon /></ListItemIcon>
+                                <ListItemText primary={'About'} />
+                            </ListItem>
+                        </Link>
                     </List>
                     <List>
                         <Link className={classes.link} to="/home">
                         <ListItem>
                             <ListItemIcon><LockIcon /></ListItemIcon>
-                            <ListItemText primary={'Log In / Register'} />
+                            <ListItemText primary={'   Log In / Register'} />
                         </ListItem>
                         </Link>
                         <ListItem>
