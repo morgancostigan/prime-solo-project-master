@@ -32,7 +32,7 @@ const ProtectedBrewerRoute = (props) => {
     if (user.id && user.isBrewer === true ) {
         // if the user is logged in (only logged in users have ids)
         // show the component that is protected
-        if (user.isBrewer === true && user.brewery_id == null) {
+        if (user.isBrewer === true && user.brewery_id === null) {
             ComponentToShow = RegisterBreweryPage;
         } else {
             ComponentToShow = ComponentToProtect;

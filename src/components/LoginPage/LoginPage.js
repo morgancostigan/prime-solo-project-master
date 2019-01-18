@@ -18,6 +18,8 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
+      this.props.history.push("/home");
+
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
@@ -84,6 +86,7 @@ class LoginPage extends Component {
           </button>
         </center>
       </div>
+
     );
   }
 }

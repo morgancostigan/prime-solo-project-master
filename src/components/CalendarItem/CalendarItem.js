@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
 
@@ -119,9 +118,7 @@ class CalendarItem extends Component {
                         onClick={this.deleteFromCalendar}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-label="Edit">
-                        <EditIcon />
-                    </IconButton>
+
                     <IconButton
                         className={classnames(classes.expand, {
                             [classes.expandOpen]: this.state.expanded,

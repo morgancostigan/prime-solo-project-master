@@ -20,6 +20,7 @@ import BeerAddPage from '../BeerAddPage/BeerAddPage';
 import Portfolio from '../Portfolio/Portfolio';
 import CalendarPage from '../CalendarPage/CalendarPage';
 import SearchPage from '../SearchPage/SearchPage';
+import SearchResultsPage from '../SearchResultsPage/SearchResultsPage';
 
 import './App.css';
 

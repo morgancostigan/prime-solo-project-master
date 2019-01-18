@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
+
+//moved almost all of this functionality to the UserDrawer
+
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">

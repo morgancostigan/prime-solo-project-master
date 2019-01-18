@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TagSearcher from '../TagSearcher/TagSearcher';
 import BrewerySearcher from '../BrewerySearcher/BrewerySearcher';
 import { withRouter } from "react-router-dom";
+import SearchResultsPage from '../SearchResultsPage/SearchResultsPage';
 
 
 class SearchPage extends Component {
@@ -13,36 +14,87 @@ class SearchPage extends Component {
     }
 
     state = {
-        name: '',
-        style: '',
-        image_url: '',
-        description: '',
-        release: '',
+        release1: '',
+        release2: '',
         brewery: '',
         tag1: '',
     };
 
-    postNewBeer = (event) => {
+    searchBeer = (event) => {
         event.preventDefault();
 
-        if (this.state.name && this.state.style && this.state.release && this.state.description) {
+        if (this.state.release1 && this.state.release2 && this.state.brewery && this.state.tag1) {
             this.props.dispatch({
-                type: 'POST_BEER',
+                type: 'SEARCH_BREWERY_RELEASE_TAG',
                 payload: {
-                    brewery_id: this.props.user.brewery_id,
-                    name: this.state.name,
-                    style: this.state.style,
-                    release: this.state.release,
-                    description: this.state.description,
-                    image_url: this.state.image_url,
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
                     tag1: this.state.tag1,
-                    tag2: this.state.tag2,
-                    tag3: this.state.tag3,
                 },
             })
-            this.props.history.push("/home");
+        } else if (this.state.release1 && this.state.release2 && this.state.brewery){
+            this.props.dispatch({
+                type: 'SEARCH_BREWERY_RELEASE',
+                payload: {
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
+                    tag1: this.state.tag1,
+                },
+            })
+        } else if (this.state.brewery && this.state.tag1) {
+            this.props.dispatch({
+                type: 'SEARCH_BREWERY_TAG',
+                payload: {
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
+                    tag1: this.state.tag1,
+                },
+            })
+        } else if (this.state.release1 && this.state.release2 && this.state.tag1) {
+            this.props.dispatch({
+                type: 'SEARCH_RELEASE_TAG',
+                payload: {
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
+                    tag1: this.state.tag1,
+                },
+            })
+        } else if (this.state.brewery) {
+            this.props.dispatch({
+                type: 'SEARCH_BREWERY',
+                payload: {
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
+                    tag1: this.state.tag1,
+                },
+            })
+        } else if (this.state.release1 && this.state.release2) {
+            this.props.dispatch({
+                type: 'SEARCH_RELEASE',
+                payload: {
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
+                    tag1: this.state.tag1,
+                },
+            })
+        } else if (this.state.tag1) {
+            this.props.dispatch({
+                type: 'SEARCH_TAG',
+                payload: {
+                    brewery: this.state.brewery,
+                    release1: this.state.release1,
+                    release2: this.state.release2,
+                    tag1: this.state.tag1,
+                },
+            })
         } else {
-            this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
+            this.props.dispatch({ type: 'SEARCH_ERROR' });
         }
     } // end 
 
@@ -63,52 +115,52 @@ class SearchPage extends Component {
     }
 
     render() {
-        // console.log('this.state', this.state);
-
         return (
             <div>
                 {this.props.errors.registrationMessage && (
                     <h2
                         className="alert"
-                        role="alert"
-                    >
+                        role="alert" >
                         {this.props.errors.registrationMessage}
-                    </h2>
-                )}
-                <form className='AddBeerForm' onSubmit={this.postNewBeer}>
+                    </h2> )}
+                <form className='SearchForm' onSubmit={this.searchBeer}>
                     <h1>Search For Beer</h1>
                     <div><BrewerySearcher handleUpdateBreweries={this.handleUpdateBreweries} /></div>
-
-
-
-
-
                     <div>
-                        <label htmlFor="release">
-                            Release Date:
-              <input
+                        <label htmlFor="release1" className='releaseEntry'>
+                            Release Dates:
+                            <input
                                 type="date"
-                                name="release"
-                                value={this.state.release}
-                                onChange={this.handleInputChangeFor('release')}
-                            />
+                                name="release1"
+                                value={this.state.release1}
+                                onChange={this.handleInputChangeFor('release1')}/>
                         </label>
                     </div>
-                    {/* //////////////////////////////this is where the style tags will be input */}
+                    <div>
+                        <label htmlFor="release2" className='releaseEntry'>
+                            thru:
+                            <input
+                                type="date"
+                                name="release2"
+                                value={this.state.release2}
+                                onChange={this.handleInputChangeFor('release2')} />
+                        </label>
+                    </div>
                     <div><TagSearcher handleUpdateTags={this.handleUpdateTags} /></div>
                     <div>
                         <input
-                            className="SubmitNewBeer"
+                            className="Search"
                             type="submit"
                             name="submit"
-                            value="Submit New Beer"
-                        />
+                            value="Search"/>
                     </div>
                 </form>
+                <SearchResultsPage />
+
             </div>
-        );
-    }
-}
+        ); // end return
+    }// end render
+}// end class SearchPage
 
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:

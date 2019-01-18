@@ -140,7 +140,7 @@ class UserDrawer extends React.Component {
                     </List>
                 </div>
             );
-        } else if (this.props.user.id) {
+        } else if (this.props.user.id && this.props.user.isBrewer === false) {
             const { classes } = this.props;
 
             fullList = (

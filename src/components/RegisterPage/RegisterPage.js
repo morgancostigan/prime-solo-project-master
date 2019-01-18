@@ -14,7 +14,6 @@ class RegisterPage extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-
     if (this.state.username && this.state.userzip && this.state.email && this.state.password) {
       this.props.dispatch({
         type: 'REGISTER_STANDARD_USER',
@@ -29,6 +28,8 @@ class RegisterPage extends Component {
 
         },
       });
+      this.props.history.push("/home");
+
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }

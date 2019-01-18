@@ -12,9 +12,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';  //will be used for future editing functionality
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
+import { withRouter } from 'react-router'
+
 
 
 const styles = theme => ({
@@ -81,6 +83,7 @@ class PortfolioItem extends Component {
             },
             refresh: this.props.brewery_id
         })
+        this.props.history.push("/portfolio");  ///////this.props was failing, so is this.context
     };
 
     render() {
@@ -119,9 +122,10 @@ class PortfolioItem extends Component {
                         onClick={this.deleteFromPortfolio}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-label="Edit">
+                    {/* Card editing functionality in the future */}
+                    {/* <IconButton aria-label="Edit">
                         <EditIcon />
-                    </IconButton>
+                    </IconButton> */}
                     <IconButton
                         className={classnames(classes.expand, {
                             [classes.expandOpen]: this.state.expanded,

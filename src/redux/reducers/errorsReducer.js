@@ -31,6 +31,8 @@ const registrationMessage = (state = '', action) => {
       return 'Brewery Registration Successful!';
     case 'USER_REGISTRATION_SUCCESSFUL':
       return 'User Registration Successful!';
+    case 'SEARCH_ERROR':
+      return 'There was an error in the search.  Please try again.';
     default:
       return state;
   }

@@ -19,8 +19,8 @@ import Chip from '@material-ui/core/Chip';
 
 const styles = theme => ({
     card: {
-        maxWidth: 350,
-        minWidth: 350,
+        maxWidth: 340,
+        minWidth: 340,
         maxHeight: 1500,
         minHeight: 400,
         margin: 10,
@@ -36,7 +36,7 @@ const styles = theme => ({
     },
     media: {
         paddingTop: '40%', // 16:9
-        maxHeight: '100%',
+        maxHeight: 136,
         maxWidth: '100%',
         objectFit: 'contain',
         // title: 24,        //trying to make this bigger, or bold   
@@ -44,7 +44,7 @@ const styles = theme => ({
     actions: {
         display: 'flex',
         // alignItems: 'center',
-        // justifyContent: 'center',      //trying to center the cards, esp on mobile
+        justifyContent: 'center',      //trying to center the cards, esp on mobile
     },
     expand: {
         transform: 'rotate(0deg)',

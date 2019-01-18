@@ -15,6 +15,7 @@ const breweryRouter = require('./routes/brewery.router');
 const tagRouter = require('./routes/tag.router');
 const calendarRouter = require('./routes/calendar.router')
 const followsRouter = require('./routes/follows.router');
+const searchRouter = require('./routes/search.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -34,6 +35,7 @@ app.use('/api/tags', tagRouter);
 app.use('/api/calendar', calendarRouter);
 app.use('/api/follows', followsRouter)
 app.use('/api/breweries', breweryRouter)
+app.use('/api/search', searchRouter);
 
 // Serve static files
 app.use(express.static('build'));
