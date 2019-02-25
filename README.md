@@ -24,7 +24,10 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-<img src="documentation/images/Landing_Page.png" width="500"/>
+<img src="documentation/images/Landing_Page.png" width="800"/>
+<img src="documentation/images/Beer_Card_Expanded.png" width="400"/>
+<img src="documentation/images/Menu_Drawer_Brewer.png" width="400"/>
+<img src="documentation/images/Beer_Add_Page.png" width="400"/>
 
 ## Create database and tables
 
