@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// worker Saga: will be fired on "DELETE_BEER" actions
+// worker Saga: will be fired on "DELETE_FROM_CALENDAR" actions
 function* deleteFromCalendar(action) {
     console.log('in deleteFromCalendar, action', action);
     try {

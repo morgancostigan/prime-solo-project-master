@@ -23,8 +23,10 @@ const AboutPage = () => (
         <li>Material-UI</li>
         <li>PostgreSQL</li>
         <li>Express</li>
-        <li>Node</li>
+        <li>NodeJs</li>
       </ul>
+      <h2>Thanks a Million</h2>
+      <p>Dane, Dev, and Ally.  Vega cohort and the rest of Prime students and staff.</p>
       <h2>Future Features</h2>
       <p>In the future I hope to implement location filtering, comments, and sharing.</p>
     </div>
