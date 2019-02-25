@@ -1,4 +1,4 @@
-# Recovery St. Paul
+# What's Brewin'
 This application uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
 What's Brewin' is a craft beer release calendar with the aim of bridging the gap between craft brewers and their audience.  By being focused exclusively on craft beer, I aimed to separate What's Brewin' from other social media networks.
