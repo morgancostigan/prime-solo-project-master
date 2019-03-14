@@ -15,6 +15,8 @@ import CalendarIcon from '@material-ui/icons/CalendarToday';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip'; 
+import swal from 'sweetalert'
+
 
 
 const styles = theme => ({
@@ -82,6 +84,8 @@ class BeerItem extends Component {
                 user_id: this.props.reduxStore.user.id,
             }
         })
+        swal("Awww Yeah!", "This li'l wonder has been added to your calendar!", "success");
+
     };
 
     addToFollows = () => {
@@ -92,6 +96,8 @@ class BeerItem extends Component {
                 user_id: this.props.reduxStore.user.id,
             }
         })
+        swal("Hot Damn!", "Now you're following these wizards!", "success");
+
     };
 
     render() {

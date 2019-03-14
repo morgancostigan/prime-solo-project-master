@@ -44,7 +44,7 @@ class BeerAddPage extends Component {
             swal("Beer Posted!", "This new elixir has been added to the release calendar!", "success");
             this.props.history.push("/home");
         } else {
-            this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
+            // this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
             swal("Posting Error.", "Please be sure all required fields are filled in, like.", "warning");
         }
     } // end postNewBeer
