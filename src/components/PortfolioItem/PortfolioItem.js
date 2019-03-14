@@ -15,6 +15,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 // import EditIcon from '@material-ui/icons/Edit';  //will be used for future editing functionality
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
+import swal from 'sweetalert'
 
 
 
@@ -74,15 +75,30 @@ class PortfolioItem extends Component {
     };
 
     deleteFromPortfolio = () => {
-        this.props.dispatch({
-            type: 'DELETE_BEER_TAGS',
-            payload: {
-                beer_id: this.props.id,
-                user_id: this.props.reduxStore.user.id,
-            },
-            refresh: this.props.brewery_id
+        swal({
+            title: "Are you sure?",
+            text: "This beer will be removed from your portfolio.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+
         })
-        // this.props.history.push("/portfolio");  ///////this.props was failing, so is this.context
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("It's gone!", {
+                        icon: "success",
+                    });
+                    this.props.dispatch({
+                        type: 'DELETE_BEER_TAGS',
+                        payload: {
+                            beer_id: this.props.id,
+                            user_id: this.props.reduxStore.user.id,
+                        },
+                        refresh: this.props.brewery_id
+                    });
+                    // this.props.history.push("/portfolio");  ///////this.props was failing, so is this.context
+                }
+            })
     };
 
     render() {

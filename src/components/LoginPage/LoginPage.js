@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert'
+
 
 class LoginPage extends Component {
   state = {
@@ -18,10 +20,13 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
+
       this.props.dispatch({ type: 'CLEAR_LOGIN_ERROR'});
+
       this.props.history.push("/home");
 
     } else {
+      swal("Hold up!", "Something went wrong!", "warning");
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   } // end login

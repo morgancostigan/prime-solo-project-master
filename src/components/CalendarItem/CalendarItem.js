@@ -87,17 +87,17 @@ class CalendarItem extends Component {
                     swal("Removed.", {
                         icon: "success",
                     });
-                    this.props.dispatch({
-                        type: 'DELETE_FROM_CALENDAR',
-                        payload: {
-                            beer_id: this.props.id,
-                            user_id: this.props.reduxStore.user.id,
-                        },
-                        refresh: this.props.reduxStore.user.id
+                this.props.dispatch({
+                    type: 'DELETE_FROM_CALENDAR',
+                    payload: {
+                        beer_id: this.props.id,
+                        user_id: this.props.reduxStore.user.id,
+                    },
+                    refresh: this.props.reduxStore.user.id
                         
-                    });
-                }
-            })
+                });
+            }
+        })
 
     }
 
