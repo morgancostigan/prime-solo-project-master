@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TagSelector from '../TagSelector/TagSelector';
 import { withRouter } from "react-router-dom";
+import swal from 'sweetalert'
+
 
 
 class BeerAddPage extends Component {
@@ -39,9 +41,11 @@ class BeerAddPage extends Component {
                     tag3: this.state.tag3,
                 },
             })
-                    this.props.history.push("/home");
+            swal("Beer Posted!", "This new elixir has been added to the release calendar!", "success");
+            this.props.history.push("/home");
         } else {
             this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
+            swal("Event Posted!", "You have successfully created an event!", "success");
         }
     } // end postNewBeer
 
