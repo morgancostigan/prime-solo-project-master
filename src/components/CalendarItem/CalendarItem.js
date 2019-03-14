@@ -14,6 +14,8 @@ import red from '@material-ui/core/colors/red';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
+import swal from 'sweetalert'
+
 
 
 const styles = theme => ({
@@ -72,15 +74,32 @@ class CalendarItem extends Component {
     };
 
     deleteFromCalendar = () => {
-        this.props.dispatch({
-            type: 'DELETE_FROM_CALENDAR',
-            payload: {
-                beer_id: this.props.id,
-                user_id: this.props.reduxStore.user.id,
-            },
-            refresh: this.props.reduxStore.user.id
+        swal({
+            title: "Are you sure?",
+            text: "This beer will be removed from your calendar.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+
         })
-    };
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Removed.", {
+                        icon: "success",
+                    });
+                    this.props.dispatch({
+                        type: 'DELETE_FROM_CALENDAR',
+                        payload: {
+                            beer_id: this.props.id,
+                            user_id: this.props.reduxStore.user.id,
+                        },
+                        refresh: this.props.reduxStore.user.id
+                        
+                    });
+                }
+            })
+
+    }
 
     render() {
         const { classes } = this.props;
@@ -148,3 +167,4 @@ const mapStateToProps = reduxStore => ({
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(withStyles(styles)(CalendarItem));
+

@@ -13,3 +13,5 @@ TO DO LIST
 - Comments
 
 - Sharing
+
+- Brewery Profile
