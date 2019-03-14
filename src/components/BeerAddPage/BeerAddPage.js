@@ -45,7 +45,7 @@ class BeerAddPage extends Component {
             this.props.history.push("/home");
         } else {
             this.props.dispatch({ type: 'BEER_INPUT_ERROR' });
-            swal("Event Posted!", "You have successfully created an event!", "success");
+            swal("Posting Error.", "Please be sure all required fields are filled in, like.", "warning");
         }
     } // end postNewBeer
 
