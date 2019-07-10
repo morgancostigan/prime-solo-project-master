@@ -27,7 +27,7 @@ function* fetchSearchBreweryReleaseResults(action) {
             withCredentials: true,
         };
 
-        const { brewery, release1, release2, tag1 } = action.payload;
+        const { brewery, release1, release2 } = action.payload;
         const response = yield axios.get(`api/search/BR/${brewery}/${release1}/${release2}`, config);/////////////////////////////
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
@@ -44,7 +44,7 @@ function* fetchSearchBreweryTagResults(action) {
             withCredentials: true,
         };
 
-        const {brewery, release1, release2, tag1} = action.payload;
+        const {brewery, tag1} = action.payload;
         const response = yield axios.get(`api/search/BT/${brewery}/${tag1}`, config);/////////////////////////////
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
@@ -61,7 +61,7 @@ function* fetchSearchReleaseTagResults(action) {
             withCredentials: true,
         };
 
-        const { brewery, release1, release2, tag1 } = action.payload;
+        const { release1, release2, tag1 } = action.payload;
         const response = yield axios.get(`api/search/RT/${release1}/${release2}/${tag1}`, config);/////////////////////////////
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
@@ -96,7 +96,7 @@ function* fetchSearchReleaseResults(action) {
             withCredentials: true,
         };
 
-        const { brewery, release1, release2, tag1 } = action.payload;
+        const { release1, release2 } = action.payload;
         const response = yield axios.get(`api/search/R/${release1}/${release2}`, config);
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
@@ -113,7 +113,7 @@ function* fetchSearchTagResults(action) {
             withCredentials: true,
         };
 
-        const { brewery, release1, release2, tag1 } = action.payload;
+        const { tag1 } = action.payload;
         const response = yield axios.get(`api/search/T?tag=${action.payload.tag1}`, config);/////////////////////////////
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
