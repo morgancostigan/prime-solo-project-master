@@ -113,7 +113,6 @@ function* fetchSearchTagResults(action) {
             withCredentials: true,
         };
 
-        const { tag1 } = action.payload;
         const response = yield axios.get(`api/search/T?tag=${action.payload.tag1}`, config);/////////////////////////////
 
         yield put({ type: 'SET_SEARCH_RESULTS', payload: response.data });
