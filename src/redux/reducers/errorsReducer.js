@@ -33,6 +33,8 @@ const registrationMessage = (state = '', action) => {
       return 'User Registration Successful!';
     case 'SEARCH_ERROR':
       return 'There was an error in the search.  Please try again.';
+    case 'NO_RESULTS_ERROR':
+      return 'There are no results for that search.  Please try something less specific.';
     case 'CLEAR_SEARCH_ERROR':
       return '';
     default:

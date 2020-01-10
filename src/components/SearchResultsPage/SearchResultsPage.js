@@ -16,6 +16,7 @@ class SearchResultsPage extends Component {
     render() {
         return (
             <div>
+                {/* {this.props.reduxStore.searchResults.length} */}
                 {/* <p> {JSON.stringify({this.props.reduxStore.searchResults})} </p> */}
 
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
