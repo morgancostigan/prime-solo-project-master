@@ -114,13 +114,18 @@ router.get('/R/:release1/:release2', rejectUnauthenticated, (req, res) => {
 
 //Search by Tag
 router.get('/T', rejectUnauthenticated, (req, res) => {
-    let queryText = (`SELECT "beer"."name" AS "beer_name", "beer"."id", "beer"."style", to_char("beer"."release", 'Mon dd, YYYY') as "release", "beer"."description", "brewery"."name", "brewery"."logo_url", "brewery"."id" as "brewery_id", array_agg(
-        DISTINCT "style"."tag") AS "tag_list" FROM "beer" 
-        JOIN "brewery" ON "brewery"."id" = "beer"."brewery_id"
-        JOIN "style_beer" ON "beer"."id" = "style_beer"."beer_id"
-        JOIN "style" ON "style"."id" = "style_beer"."style_id"
-        WHERE "style_beer"."style_id" = $1 
-        GROUP BY "beer_name", "beer"."id", "beer"."style", "release", "beer"."description", "brewery"."name", "brewery"."logo_url", "brewery"."id" ORDER BY random();`);
+    let queryText = (`SELECT "beer"."name" AS "beer_name", "beer"."id", "beer"."style",         to_char ("beer"."release", 'Mon dd, YYYY') as "release", "beer"."description",  
+        "brewery"."logo_url", 
+        "brewery"."id" as "brewery_id", 
+        array_agg( DISTINCT "style"."tag") AS "tag_list" FROM "beer" 
+        JOIN "style"
+        JOIN "style_beer" AS "s1" ON "style"."id" = "s1"."style_id"          
+        JOIN "style_beer" AS "b1" ON "s1"."beer_id" = "b1"."beer_id"  
+        ON "beer"."id" = "s1"."beer_id" 
+		JOIN "brewery" ON "brewery"."id" = "beer"."brewery_id"
+        WHERE "b1"."style_id" = $1
+        GROUP BY "beer"."name", "beer"."id",
+        "brewery"."logo_url", "brewery"."id";`);
     pool.query(queryText, [req.query.tag]).then((result) => {
         console.log('result.rows', result.rows);
         res.send(result.rows);
