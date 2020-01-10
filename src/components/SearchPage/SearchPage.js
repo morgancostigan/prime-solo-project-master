@@ -33,6 +33,8 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
+
         } else if (this.state.release1 && this.state.release2 && this.state.brewery){
             this.props.dispatch({
                 type: 'SEARCH_BREWERY_RELEASE',
@@ -43,6 +45,8 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
+
         } else if (this.state.brewery && this.state.tag1) {
             this.props.dispatch({
                 type: 'SEARCH_BREWERY_TAG',
@@ -53,6 +57,8 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
+
         } else if (this.state.release1 && this.state.release2 && this.state.tag1) {
             this.props.dispatch({
                 type: 'SEARCH_RELEASE_TAG',
@@ -63,6 +69,8 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
+
         } else if (this.state.brewery) {
             this.props.dispatch({
                 type: 'SEARCH_BREWERY',
@@ -73,6 +81,7 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
         } else if (this.state.release1 && this.state.release2) {
             this.props.dispatch({
                 type: 'SEARCH_RELEASE',
@@ -83,6 +92,8 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
+
         } else if (this.state.tag1) {
             this.props.dispatch({
                 type: 'SEARCH_TAG',
@@ -93,6 +104,8 @@ class SearchPage extends Component {
                     tag1: this.state.tag1,
                 },
             })
+            this.props.dispatch({ type: 'CLEAR_SEARCH_ERROR' });
+
         } else {
             this.props.dispatch({ type: 'SEARCH_ERROR' });
         }
