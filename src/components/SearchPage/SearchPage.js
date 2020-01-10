@@ -130,11 +130,11 @@ class SearchPage extends Component {
     render() {
         return (
             <div>
-                {this.props.errors.registrationMessage && (
+                {this.props.errors.searchMessage && (
                     <h2
                         className="alert"
                         role="alert" >
-                        {this.props.errors.registrationMessage}
+                        {this.props.errors.searchMessage}
                     </h2> )}
                 <form className='SearchForm' onSubmit={this.searchBeer}>
                     <h1>Search For Beer</h1>

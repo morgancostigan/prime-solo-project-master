@@ -31,6 +31,15 @@ const registrationMessage = (state = '', action) => {
       return 'Brewery Registration Successful!';
     case 'USER_REGISTRATION_SUCCESSFUL':
       return 'User Registration Successful!';
+    default:
+      return state;
+  }
+};
+
+// searchMessage holds the string that will display
+// on the search screen if there's an error
+const searchMessage = (state = '', action) => {
+  switch (action.type) {
     case 'SEARCH_ERROR':
       return 'There was an error in the search.  Please try again.';
     case 'NO_RESULTS_ERROR':
@@ -48,4 +57,5 @@ const registrationMessage = (state = '', action) => {
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  searchMessage,
 });
